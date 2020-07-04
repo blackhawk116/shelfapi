@@ -1,0 +1,39 @@
+{
+  "name": "node-express",
+  "version": "1.0.0",
+  "description": "Express web app using MVC (no views yet)",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "lodash": "latest",
+    "lodash.find": "latest",
+    "mongoose": "latest",
+    "nedb": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "node-express"
+  },
+  "keywords": [
+    "JavaScript",
+    "Node.js",
+    "Express.js",
+    "web",
+    "chat",
+    "app",
+    "jQuery",
+    "seed",
+    "data",
+    "heroku"
+  ],
+  "author": "Gunashekar Koppula",
+  "license": "MIT",
+  "engines": {
+    "node": "10.1"
+  }
+}
