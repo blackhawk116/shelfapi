@@ -20,7 +20,18 @@ const bookSchema = new mongoose.Schema({
         type:String,
         required:true,
         minlength:4
+    },
+    genre:{
+        type:String,
+        required:true,
+        minlength:4
+    },
+    prologue:{
+        type:String,
+        required:true,
+        minlength:4
     }
+
 
 
 });

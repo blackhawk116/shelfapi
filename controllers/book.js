@@ -29,10 +29,12 @@ api.post('/addBook',async(req,res)=>{
     data.title = req.body.title;
     data.author = req.body.author;
     data.publishedon = req.body.publishedon;
+    data.genre=req.body.genre;
+    data.prologue=req.body.prologue;
 
     try{
         await data.save();
-        res.send("hello");
+        res.send();
       }
       catch (err) {
         res.status(500).send(err);
@@ -43,21 +45,23 @@ api.post('/addBook',async(req,res)=>{
 
 })
 
-api.get('/findone/:id', (req, res) => {
+api.get('/findone/:id', async(req, res) => {
 
     res.setHeader('Content-Type', 'application/json')
-    const id = parseInt(req.params.id) 
+    const id = (req.params.id) 
+
     
-    const item = find(Book, { _id: id })
-    if (!item) { return res.end(notfoundstring + id) }
-    res.send(JSON.stringify(item))
+     Book.findOne( { _id: id }).exec(function(err, items){
+      res.send(items);
+    });
+    
   })
   
 
- api.post('/deleteBook', (req, res) => {
+ api.get('/deleteBook/:id', (req, res) => {
   
     Book.findByIdAndDelete({
-        _id:req.body.params.bookId
+        _id:req.params.id
     },
      (error, report)=>{
     if(error){
@@ -74,15 +78,17 @@ api.get('/findone/:id', (req, res) => {
 api.post('/updateBook', (req, res) => {
   
     Book.findByIdAndUpdate({
-        _id:req.body.params.bookId
+        _id:req.body._id
     },{
 
     $set:
      { 
         publisher :req.body.publisher,
         title : req.body.title,
-        author : req.body.auhtor,
-        publishedon : req.body.publishedon
+        author : req.body.author,
+        publishedon : req.body.publishedon,
+        genre:req.body.genre,
+        prologue:req.body.prologue
      }
 
     },

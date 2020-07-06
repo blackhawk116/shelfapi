@@ -8,10 +8,14 @@
  **/
 const http = require('http')  // use require to import the Node.js http package
 const express = require('express')  // require Express framework
-const app = express()  // create an Express web app
+const app = express() 
+var cors = require('cors')
+ // create an Express web app
 const server = http.createServer(app)  // pass in the Express app to our http server
 const path = require('path')
 const bodyParser = require('body-parser')
+
+app.use(cors())
 
     // allows access from remote computers
 //const port = 3005;
